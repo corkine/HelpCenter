@@ -26,6 +26,8 @@ http://go.mazhangjing.com/gstreamer_msvc
 
 ## MRC(Matlab Runtime, 2018b) Windows 版本
 
+> OSS 带宽费用高昂，请勿多次或恶意下载、分享
+
 http://go.mazhangjing.com/mrc2018b_win
 
 ## MATLAB 2018b Windows 版本下载
