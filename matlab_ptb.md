@@ -48,6 +48,12 @@ https://pan.baidu.com/s/1Pl64M42QHU78DbpobQpXPQ 提取码: d8jt
 
 http://go.mazhangjing.com/python368
 
+## Scala 2.12.6 (Java 8 以上)
+
+> OSS 带宽费用高昂，请勿多次或恶意下载、分享
+
+https://mvnrepository.com/artifact/org.scala-lang/scala-library/2.12.6
+
 # 联系方式
 
 > 联系地址：matlab_issure@mazhangjing.com
