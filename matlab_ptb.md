@@ -54,6 +54,8 @@ http://go.mazhangjing.com/python368
 
 https://mvnrepository.com/artifact/org.scala-lang/scala-library/2.12.6
 
+http://go.mazhangjing.com/scala2126
+
 # 联系方式
 
 > 联系地址：matlab_issure@mazhangjing.com
