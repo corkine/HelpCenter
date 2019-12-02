@@ -6,10 +6,8 @@
 
 最简单的方法，下载 PTB 最新版本，解压到一个安全稳定的位置，然后找到 Psychtoolbox > SetupPsychtoolbox.m 文件，将其拖拽到 MATLAB 的命令行中，一路 ENTER 即可安装。
 
-## 存在问题（截至2019年11月30日）
-
+> 存在问题（截至2019年11月30日）
 PTB 尚不支持 macOS Catalina（2019年11月30日）。
-
 PTB 已知在 Windows 10 1909 版本中无法直接运行 —— 缺少 OpenGL 的 gstreamer 组件。
 
 ## 开发环境配置指南
