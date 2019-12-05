@@ -1,6 +1,6 @@
 # PsychToolbox 安装和运行指南
 
-> 更新时间 2019-12-02
+> 更新时间 2019年12月5日
 
 ## PTB 包安装指南
 
@@ -19,23 +19,27 @@ MATLAB 自带的编辑器提供了代码分析 mlint，不过在代码补全、�
 
 获取 MATLAB 安装文件夹的 matlab 程序路径以及 mlint 代码检查程序路径
 
-matlab 程序路径位于 `bin/` 文件夹下，比如 `/Volumes/Apps/MATLAB.app/bin/matlab`，macOS 需要在安装文件右键 - 显示包内容以显示真实文件夹。
+matlab 程序路径位于 `bin/` 文件夹下
 
-mlint 程序路径位于 `bin/[win64,maci64,...]/` 文件夹下，比如 `/Volumes/Apps/MATLAB.app/bin/maci64/mlint`。
+- macOS：比如 `/Volumes/Apps/MATLAB.app/bin/matlab`，macOS 需要在安装文件右键 - 显示包内容以显示真实文件夹。
+- Windows：比如 `C:\\Program Files\\MATLAB\\R2018b\\bin\\matlab.exe`，注意，使用双反斜线替代单反斜线。
+
+mlint 程序路径位于 `bin/[win64,maci64,...]/` 文件夹下
+
+- macOS：比如 `/Volumes/Apps/MATLAB.app/bin/maci64/mlint`，macOS 需要在安装文件右键 - 显示包内容以显示真实文件夹。
+- Windows：比如 `C:\\Program Files\\MATLAB\\R2018b\\bin\\win64\\mlint.exe`，注意，使用双反斜线替代单反斜线。
 
 ### 安装 Visual Studio Code 及插件
 
 下载并安装 VSCode：[微软 Visual Studio Code 官方下载](https://code.visualstudio.com/)
 
-打开 VSCode，在左侧扩展选项卡中，分别搜索 `code runner`、`matlab` 安装扩展 `Code Runner by Jun Han` 和 `Matlab by Xavier Hahn`。
+打开 VSCode，在左侧扩展选项卡中，分别搜索 `code runner`、`matlab` 安装扩展 `Code Runner by Jun Han` 和 `Matlab by Xavier Hahn`，点击安装。
 
-首先配置 Matlab 插件，打开菜单 - 偏好 - 设置，然后找到 Extensions - Matlab Configure，填写 matlab 和 mlint 路径，设置编码为 GBK：
+首先配置 Matlab 插件，打开菜单 - 偏好 - 设置，搜索 `matlab`，设置 Linter Encoding为 GBK，填写 Matlabpath 和 Mlintpath 路径
 
 ![](http://static2.mazhangjing.com/20191202/53531b7_matlab_vscode_1.png)
 
-之后，设置 Code 的自动保存，以及自动猜测编码，这样可以提高 mlint 提示的速度并且避免手动更换文件编码。
-
-> 可以直接将相应设置项，比如 `files.autoGuess..`，将其复制到搜索框，即可查看和修改。
+之后，通过搜索 `auto save` 和 `guess` 来设置 Code 的自动保存 `Files: Auto Save` 为 autoDelay，以及自动猜测编码 `Files: Auto Guess Encoding`，这样可以提高 mlint 提示的速度并且避免手动更换文件编码。
 
 本质上，启用如下配置：
 
@@ -47,20 +51,28 @@ mlint 程序路径位于 `bin/[win64,maci64,...]/` 文件夹下，比如 `/Volum
 "files.autoGuessEncoding": true
 ```
 
-之后配置 Code Runner 插件，按照如下配置即可，这样做之后可以通过点击右上角的运行三角按钮来执行脚本，不过，每次执行都会创建一个新的 MATLAB 实例，非常耗时，因此，仅做备用。
+> 注意，替换 matlabpath 和 mlintpath 为你自己的地址，如果使用图形界面配置，则不需要此步骤。
+
+之后配置 Code Runner 插件，按照如下配置即可，这样做之后可以通过点击右上角的运行三角按钮来执行脚本，不过，每次执行都会创建一个新的 MATLAB 实例，非常耗时，因此，仅做备用。在搜索框直接复制 `files.associations`，点击编辑 settings.json，然后粘贴如下代码：
 
 ```json
 "files.associations": {
 	"*.m": "matlab"
-}
-"code-runner.executorMap" {
+},
+"code-runner.executorMap": {
 	"matlab": "cd $dir && /Volumes/Apps/MATLAB.app/bin/matlab -nosplash -nodesktop -nodisplay -r $fileNameWithoutExt" 
 }
 ```
 
+> 注意，替换 `code-runner.executorMap` 中的 `/Volumes/Apps/MATLAB.app/bin/matlab` 为你自己的 matlab 路径，注意检查代码之前和之后注意检查是否有遗失的逗号。
+
 ### 配置 PATH
 
-之后配置 PATH，在 macOS 下，修改 ~/.bash_profile 文件，添加如下指令：
+之后配置 PATH：
+
+#### macOS
+
+在 macOS 下，修改 `~/.bash_profile` 文件，添加如下指令：
 
 ```bash
 export PATH=/Volumes/Apps/MATLAB.app/bin:$PATH
@@ -69,6 +81,14 @@ alias matlabgui="matlab -nosplash -nodesktop"
 ```
 
 之后 `source ~/.bash_profile`，使其生效。这样之后，就可以在命令行执行 matlabshell 创建无窗口 REPL，以及 matlabgui 创建不带开始屏幕的 MATLAB 实例了。
+
+#### Windows
+
+依次打开 Windows 资源管理器 > 此电脑（右键） > 属性 > 高级系统设置 > 环境变量 > 系统变量中的 Path 条目 > 新建 > 输入 matlab 路径，注意，使用单反斜杠，且到 bin 目录为止，比如：`C:\Program Files\MATLAB\R2018b\bin` > 将其移动到较高优先级 > 确定。如下图所示：
+
+![](http://static2.mazhangjing.com/20191205/8360cc9_path_windows.png)
+
+这样就可以在任意终端执行 `matlab` 来启动 matlab 实例了。
 
 ### 使用 Code 替代 MATLAB IDE
 
