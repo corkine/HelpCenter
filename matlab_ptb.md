@@ -37,7 +37,7 @@ mlint 程序路径位于 `bin/[win64,maci64,...]/` 文件夹下
 
 打开 VSCode，在左侧扩展选项卡中，分别搜索 `code runner`、`matlab` 安装扩展 `Code Runner by Jun Han` 和 `Matlab by Xavier Hahn`，点击安装。
 
-首先配置 Matlab 插件，打开菜单 - 偏好 - 设置，搜索 `matlab`，设置 Linter Encoding为 GBK，填写 Matlabpath 和 Mlintpath 路径
+首先配置 Matlab 插件，打开菜单 - 偏好 - 设置，搜索 `matlab`，设置 Linter Encoding为 GBK，填写 Matlabpath 和 Mlintpath 路径，下图为 macOS 的示例，Windows 在此处需要使用双反斜杠 `\\` 而不是 `/`，填写自己安装的 MATLAB 位置即可。
 
 ![](http://static2.mazhangjing.com/20191202/53531b7_matlab_vscode_1.png)
 
@@ -53,7 +53,7 @@ mlint 程序路径位于 `bin/[win64,maci64,...]/` 文件夹下
 "files.autoGuessEncoding": true
 ```
 
-> 注意，替换 matlabpath 和 mlintpath 为你自己的地址，如果使用图形界面配置，则不需要此步骤。
+> 注意，替换 matlabpath 和 mlintpath 为你自己的地址，如果使用上图所示的图形界面配置，则不需要重复设置此 JSON 配置。
 
 之后配置 Code Runner 插件，按照如下配置即可，这样做之后可以通过点击右上角的运行三角按钮来执行脚本，不过，每次执行都会创建一个新的 MATLAB 实例，非常耗时，因此，仅做备用。在搜索框直接复制 `files.associations`，点击编辑 settings.json，然后粘贴如下代码：
 
